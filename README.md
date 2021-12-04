@@ -1,7 +1,8 @@
-# lua-yt-dlp
+# lua-st_yt_dlp
 
 This is a simple yt-dlp wrapper written in Lua.  
 Below is one example which you can copy and execute, moreover are the available functions explained further below.
+To install, place st_yt_dlp.lua wherever you need the module to be.
 
 Currently there are not that many options supported. But if there is enough interest in this wrapper, the command list can be easily expanded.
 
