@@ -7,6 +7,7 @@ local st_yt_dlp_module = {}
 local OPTIONS = {
     {"yt-dlp", nil, nil},
     {"ignore_errors", "boolean", "-i"},
+    {"quiet", "boolean", "--quiet"},
     {"format", "string", "-f"},
     {"merge_output_format", "string", "--merge-output-format"},
     {"link", nil, nil},
@@ -35,9 +36,10 @@ function create_command(link, opts)
         local option_name = option_item[1]
         if opts[option_name] ~= nil then
             if type(opts[option_name]) == option_item[2] then
-                if option_item[3] ~= nil and used_flags[option_item[3]] == nil then
-                    result_command = result_command .. " " .. option_item[3]
-                    used_flags[option_item[3]] = nil
+                if option_item[3] ~= nil and used_flags[option_item[3]] == nil and opts[option_name] ~= false then
+                        result_command = result_command .. " " .. option_item[3]
+                        used_flags[option_item[3]] = nil
+
                     if option_item[2] ~= "boolean" then
                         result_command = result_command .. " '" .. opts[option_name] .. "'"
                         used_flags[option_item[3]] = opts[option_name]
